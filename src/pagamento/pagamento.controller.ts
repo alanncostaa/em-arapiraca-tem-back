@@ -16,6 +16,21 @@ export class PagamentoController {
         return this.pagamentoService.findAll();
     }
 
+    @Get('/contPag')
+    async contPag(){
+        return this.pagamentoService.contPag();
+    }
+
+    @Get('/somPag')
+    async somPag(){
+        return this.pagamentoService.somarPag();
+    }
+
+    @Get(":id")
+    async findOne(@Param("id") id_Projeto: string){
+        return this.pagamentoService.findOne(id_Projeto);
+    }
+
     @Put(":id")
     async update(@Param("id") id: string, @Body() data:PagamentoDTO){
         return this.pagamentoService.update(id, data);

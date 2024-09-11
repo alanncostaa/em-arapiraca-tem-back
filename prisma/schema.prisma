@@ -30,7 +30,6 @@ model Projeto {
 
 model Tarefa {
   id    String   @id @default(cuid())
-  id_Projeto String
   status String
   data String 
   nome String
@@ -39,7 +38,7 @@ model Tarefa {
 model Pagamento {
   id    String   @id @default(cuid())
   id_Projeto String
-  status String
+  status String @default("A Receber")
   valor Float @default(0)
   data String @default("")
 }

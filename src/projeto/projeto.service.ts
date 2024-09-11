@@ -28,6 +28,11 @@ export class ProjetoService {
     async findAll(){
         return this.prisma.projeto.findMany();
     }
+
+    async contProjetos(){
+        return this.prisma.projeto.count();
+    }
+
     async update(id: string, data: ProjetoDTO){
         const projetoExists = await this.prisma.projeto.findUnique({
             where: {

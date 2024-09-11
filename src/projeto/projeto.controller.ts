@@ -16,6 +16,11 @@ export class ProjetoController {
         return this.projetoService.findAll();
     }
 
+    @Get('/contProjs')
+    async contProj(){
+        return this.projetoService.contProjetos();
+    }
+
     @Get(":id")
     async findByClient(@Param("id") id: string,){
         return this.projetoService.findByClient(id);

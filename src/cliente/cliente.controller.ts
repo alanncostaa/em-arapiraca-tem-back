@@ -17,6 +17,11 @@ export class ClienteController {
         return this.clienteService.findAll();
     }
 
+    @Get('/orderByCliente')
+    async order(){
+        return this.clienteService.contCliente();
+    }
+
     @Get(":id")
     async findOne(@Param("id") id: string,){
         return this.clienteService.findOne(id);

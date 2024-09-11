@@ -27,6 +27,10 @@ export class ClienteService {
         });
     }
 
+    async contCliente(){
+        return this.prisma.cliente.count()
+    }
+
     async update(id: string, data: ClienteDTO){
         const clienteExists = await this.prisma.cliente.findUnique({
             where: {

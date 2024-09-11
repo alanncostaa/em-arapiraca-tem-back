@@ -20,8 +20,42 @@ export class PagamentoService {
         return this.prisma.pagamento.findMany();
     }
 
-    
-    
+    async contPag(){
+        return this.prisma.pagamento.count({
+            where: {
+                status: 'Pago',
+            }
+        })
+    }
+
+    async somarPag(){
+        return this.prisma.pagamento.aggregate({
+            _sum:{
+                valor: true
+            }
+        })
+    }
+
+
+    async findOne(id_Projeto: string){
+
+        const pagamentoExists = await this.prisma.pagamento.findMany({
+            where: {
+                id_Projeto,
+            }
+        })
+
+        if(!pagamentoExists){
+            throw new Error("O pagamento não existe");
+        }
+
+        return this.prisma.pagamento.findMany({
+            where: {
+                id_Projeto,
+            }
+        });
+    }
+
 
     async update(id: string, data: PagamentoDTO){
         const pagamentoExists = await this.prisma.pagamento.findUnique({
